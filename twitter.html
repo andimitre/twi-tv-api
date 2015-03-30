@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Twitter API</title>
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+</head>
+
+<body>
+<form action="twitter.php" method="POST">
+	<label for="hashtag">Enter a hashtag </label></br>
+	<input type="text" name="hashtag" id="hashtag" maxlength="20" autocomplete="off" autofocus="on"><br>
+	<br>
+	<input type="button" value="Submit" onclick="ajx()">
+</form>
+<p>
+<div id="datadump" name="datadump"></div>
+
+<script type="text/javascript">
+    function ajx(){
+         var $x = $("#hashtag").val();
+        $.ajax({
+            type: "POST",
+            url: "twitter.php",
+            data: "hashtag=" + $x,
+            error:function(xhr, status, error){
+                alert("Error!");
+            },
+            success: function(result){
+            
+                $("#datadump").html(result);
+            },
+        });
+    }
+</script>
+</body>
+</html>
