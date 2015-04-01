@@ -24,27 +24,20 @@ $data = $twitter->setGetfield($getfield)
              ->performRequest();
 
 $obj1 = json_decode($data);
-//var_dump($obj1);
-$valu = $obj1->statuses;
-$count = 1;
+var_dump($obj1);
+// $valu = $obj1->statuses;
+// $count = 1;
 
-foreach ($valu as $objstat) {
-	echo "<strong> $count. </strong>" . $objstat->text . " <u>BY</u> ";
-	echo $objstat->user->name . " " . $objstat->user->followers_count . "<br>";
-	$count++;
-}
-
-
+// foreach ($valu as $objstat) {
+// 	echo "<strong> $count. </strong>" . $objstat->text . " <u>BY</u> ";
+// 	echo $objstat->user->name . " " . $objstat->user->followers_count . "<br>";
+// 	$count++;
+// }
 
 
-
-
-
-
-
-
-
-
+// insert data as key => value in mongodb
+// query db and print result back on page
+// clean it up functions
 
 
 

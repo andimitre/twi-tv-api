@@ -4,18 +4,35 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>TV API</title>
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 </head>
 
 <body>
+<form action="tv.php" method="POST">
+	<label for="show">Enter a show </label></br>
+	<input type="text" name="show" id="show" maxlength="20" autocomplete="off" autofocus="on"><br>
+	<br>
+	<input type="button" value="Submit" onclick="ajax()">
+</form>
+<p>
+<div id="datadump" name="datadump"></div>
 
-
-<h4>hi</h4>
-
-
-
+<script type="text/javascript">
+    function ajax(){
+         var $x = $("#show").val();
+        $.ajax({
+            type: "POST",
+            url: "tv.php",
+            data: "show=" + $x,
+            error:function(xhr, status, error){
+                alert("Error!");
+            },
+            success: function(result){
+            
+                $("#datadump").html(result);
+            },
+        });
+    }
+</script>
 </body>
 </html>
-
-
-https://api.twitter.com/1.1/search/tweets.json?q=%23Toyota&result_type=recent&count=1
-https://api.twitter.com/1.1/search/tweets.json?q=%23superbowl&result_type=recent&count=1
