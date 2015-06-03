@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Twitter Trends</title>
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+</head>
+
+<body>
+<form action="" method="POST">
+	<input type="button" value="Get Trends" onclick="ajx()">
+</form>
+<p>
+<div id="datadump" name="datadump"></div>
+
+<script type="text/javascript">
+    function ajx(){
+         
+        $.get("trends.php", function (data) {
+            $("#datadump").html(data);
+            console.log("Retrieving Twitter Data...")
+        });
+    }
+</script>
+</body>
+</html>

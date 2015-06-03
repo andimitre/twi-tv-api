@@ -16,7 +16,7 @@ $settings = array(
 
 
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
-$getfield = '?q=%23' . $vals . '&count=10';
+$getfield = '?q=%23' . $vals . '&count=1';
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 $data = $twitter->setGetfield($getfield)
@@ -24,15 +24,15 @@ $data = $twitter->setGetfield($getfield)
              ->performRequest();
 
 $obj1 = json_decode($data);
-var_dump($obj1);
-// $valu = $obj1->statuses;
-// $count = 1;
+$valu = $obj1->statuses;
+var_dump($valu);
+$count = 1;
 
-// foreach ($valu as $objstat) {
-// 	echo "<strong> $count. </strong>" . $objstat->text . " <u>BY</u> ";
-// 	echo $objstat->user->name . " " . $objstat->user->followers_count . "<br>";
-// 	$count++;
-// }
+foreach ($valu as $objstat) {
+	echo "<strong> $count. </strong>" . $objstat->text . " RT Count " . $objstat->retweet_count . " <u>BY</u> " . " FAV count " . $objstat->favorite_count;
+	echo $objstat->user->name . " " . $objstat->user->followers_count . " USER FOLLOWER COUNT";
+	$count++;
+}
 
 
 // insert data as key => value in mongodb
